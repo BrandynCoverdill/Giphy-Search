@@ -3,7 +3,28 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Template</title>
+		<link rel="shortcut icon" href="#" type="image/x-icon" />
+		<title>Giphy Search</title>
 	</head>
-	<body></body>
+	<body>
+		<div class="container">
+			<section class="search-container">
+				<div class="search">
+					<form novalidate>
+						<h1>Search Gifs</h1>
+						<input type="text" name="search" id="search" required />
+						<span class="error"></span>
+						<button type="submit">Search</button>
+					</form>
+					<div class="recent-search-container">
+						<p>Recent Searches</p>
+						<div class="search-history"></div>
+					</div>
+				</div>
+			</section>
+			<aside class="gif-container">
+				<p>Search a gif to get started!</p>
+			</aside>
+		</div>
+	</body>
 </html>

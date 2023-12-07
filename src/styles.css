@@ -1,3 +1,4 @@
+/* General styling */
 body > * {
 	margin: 0;
 	padding: 0;
@@ -5,4 +6,146 @@ body > * {
 
 * {
 	box-sizing: border-box;
+}
+
+body {
+	background: #140622;
+}
+
+/* Parent container */
+.container {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	padding: 1em;
+	color: #ffffff;
+	text-align: center;
+	gap: 1em;
+}
+
+/* Search container */
+.search-container {
+	grid-column: 1 / 2;
+	max-width: 25em;
+	justify-self: center;
+}
+
+h1 {
+	margin: 0;
+	padding: 0;
+	font-size: 1.5em;
+}
+
+.search {
+	background: #c28eec;
+	color: #ffffff;
+	border-radius: 10px;
+	padding: 10px;
+	position: sticky;
+	top: 0px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	max-width: 19em;
+	margin: 0 auto;
+}
+
+input[type='text'] {
+	border-radius: 15px;
+	border: none;
+	height: 22px;
+	padding-inline: 10px;
+	margin: 0 auto;
+	width: 17em;
+	font-size: 18px;
+}
+
+input:invalid {
+	border: 1px solid red;
+}
+
+input:focus:invalid {
+	outline: none;
+}
+
+.error {
+	display: none;
+}
+
+.active {
+	color: rgb(151, 19, 19);
+	display: block;
+	font-size: 16px;
+}
+
+button {
+	color: #ffffff;
+	background: #db2a87;
+	border: none;
+	border-radius: 15px;
+	padding-inline: 10px;
+	padding-block: 5px;
+	max-width: fit-content;
+	align-self: flex-end;
+	cursor: pointer;
+	font-size: 18px;
+}
+
+button:hover {
+	background: #b42270;
+}
+
+.recent-search-container {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	margin-block-start: 1em;
+}
+
+.recent-search-container p {
+	margin: 0 auto;
+}
+
+.search-history {
+	background: #871774;
+	min-height: 25em;
+	max-height: 25em;
+	width: 250px;
+	margin: 0 auto;
+	overflow: auto;
+	padding-block: 1em;
+}
+
+.search-history p {
+	width: fit-content;
+	margin: 0 auto;
+	font-size: 18px;
+}
+
+.search-history p:hover {
+	color: #aaaaaa;
+	cursor: pointer;
+}
+
+/* Gif container */
+.gif-container {
+	grid-column: 2 / 3;
+	text-align: left;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1em;
+}
+
+.gif-container > a {
+	height: fit-content;
+}
+
+.gif-container > a img {
+	max-width: 300px;
+}
+
+.gif-container p {
+	font-size: 1.5em;
 }
