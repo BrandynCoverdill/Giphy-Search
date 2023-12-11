@@ -70,39 +70,38 @@ submitBtn.addEventListener('click', (e) => {
 /**
  * Fetches the Giphy API for gifs and returns an array
  */
-function fetchData(value) {
-	// fetch api data
-	fetch(
-		`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${input.value}`,
-		{
-			mode: 'cors',
-		}
-	)
-		.then((response) => {
-			return response.json();
-		})
-		.then((response) => {
-			// If response came back with zero data
-			if (response.data[0] === undefined) {
-				const nothingToDisplay = document.createElement('p');
-				nothingToDisplay.textContent =
-					'Sorry, the term you have searched came up empty. :(';
-				gifContainer.appendChild(nothingToDisplay);
-			} else {
-				// Data successfully came back
-				response.data.forEach((gif) => {
-					const gifUrl = document.createElement('a');
-					const gifImage = document.createElement('img');
-					gifUrl.setAttribute('href', gif.images.original.url);
-					gifImage.src = gif.images.original.url;
-					gifUrl.appendChild(gifImage);
-					gifContainer.appendChild(gifUrl);
-				});
+async function fetchData(value) {
+	try {
+		// fetch api data
+		const response = await fetch(
+			`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${input.value}`,
+			{
+				mode: 'cors',
 			}
-		})
-		.catch((err) => {
-			const error = document.createElement('p');
-			error.textContent = err;
-			gifContainer.appendChild(error);
-		});
+		);
+		// Convert object into a promise
+		const gifData = await response.json();
+
+		// If response came back with zero data
+		if (gifData.data[0] === undefined) {
+			const nothingToDisplay = document.createElement('p');
+			nothingToDisplay.textContent =
+				'Sorry, the term you have searched came up empty. :(';
+			gifContainer.appendChild(nothingToDisplay);
+		} else {
+			// Data successfully came back
+			gifData.data.forEach((gif) => {
+				const gifUrl = document.createElement('a');
+				const gifImage = document.createElement('img');
+				gifUrl.setAttribute('href', gif.images.original.url);
+				gifImage.src = gif.images.original.url;
+				gifUrl.appendChild(gifImage);
+				gifContainer.appendChild(gifUrl);
+			});
+		}
+	} catch (err) {
+		const error = document.createElement('p');
+		error.textContent = err;
+		gifContainer.appendChild(error);
+	}
 }
